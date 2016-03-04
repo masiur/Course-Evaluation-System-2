@@ -13,42 +13,43 @@
                       </a>
                   </li>
 
-                  {{-- Task Manager --}}
+                  {{-- User --}}
                   <li>
 
-                      <a href="#">
-                          <i class="fa fa-tasks"></i>
-                          <span>Task Manager</span>
+                      <a href="{{ route('user.create') }}">
+                          <i class="fa fa-user"></i>
+                          <span>Add Admin</span>
                       </a>
                   </li>
                   {{-- Carrier Accounts --}}
                   <li>
 
-                      <a href="#">
-                          <i class="fa fa-plane"></i>
-                          <span>Carrier Accounts</span>
+                      <a href="{{ route('user.index') }}">
+                          <i class="fa fa-user"></i>
+                          <span>View all admin</span>
                       </a>
                   </li>
 
-                  {{-- Shipments --}}
+                  {{-- Token --}}
                   <li>
 
-                      <a href="#">
-                          <i class="fa fa-truck"></i>
-                          <span>Shipments</span>
+                      <a href="{{ route('token.create') }}">
+                          <i class="fa fa-gears"></i>
+                          <span>Create Token</span>
                       </a>
                   </li>
 
                   {{-- Customers --}}
                   <li>
 
-                      <a href="#">
-                          <i class="fa fa-user"></i>
-                          <span>Customers</span>
+                      <a href="{{ route('token.index') }}">
+                          <i class="fa fa-gears"></i>
+                          <span>All tokens</span>
                       </a>
                   </li>
 
                   {{-- Salespersons --}}
+                  <!-- Masiur Rahman Siddiki mrsiddiki@gmail.com
                   <li>
 
                       <a href="#">
@@ -74,6 +75,8 @@
                           <span>Roles & Permissions</span>
                       </a>
                   </li>
+
+                  -->
 
 
                   

@@ -30,8 +30,12 @@ Route::group(array('before' => 'auth'), function()
 	Route::post('change-password', array('as' => 'password.doChange', 'uses' => 'AuthController@doChangePassword'));
 	
 	Route::get('user', ['as' => 'user.index', 'uses' => 'AuthController@index']);
-	Route::get('create', ['as' => 'user.create', 'uses' => 'AuthController@create']);
+	Route::get('user/add', ['as' => 'user.create', 'uses' => 'AuthController@create']);
 	Route::post('create', ['as' => 'user.store', 'uses' => 'AuthController@store']);
+
+	Route::get('token', ['as' => 'token.index', 'uses' => 'TokenController@index']);
+	Route::get('token/create', ['as' => 'token.create', 'uses' => 'TokenController@create']);
+	Route::post('create', ['as' => 'token.store', 'uses' => 'TokenController@store']);
 
 
 });

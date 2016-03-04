@@ -12,10 +12,10 @@ class CreateTokensTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('token', function(Blueprint $table)
+		Schema::create('tokens', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('token');
+			$table->string('token')->unique();
 			$table->integer('is_used');
 			$table->string('link');
 			$table->integer('user_id')->unsigned();
@@ -34,7 +34,7 @@ class CreateTokensTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('token');
+		Schema::drop('tokens');
 	}
 
 }
