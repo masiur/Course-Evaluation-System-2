@@ -10,9 +10,10 @@ class TokenController extends \BaseController {
 	 */
 	public function index()
 	{
-		return $token = Token::all();
+		$token = Token::all();
 		return View::make('indexToken')
-				->with('title', 'All Created Tokens');
+				->with('title', 'All Created Tokens')
+				->with('tokens', $token);
 	}
 
 	/**
@@ -37,15 +38,13 @@ class TokenController extends \BaseController {
 	 */
 	public function store()
 	{
-		{
-		
 		$rules = [
 
 					'amount'      => 'required|numeric',
 					'url' => 'required|url',
 					'user_id' => 'required',
 
-		];
+			];
 
 		$data = Input::all();
 
@@ -54,10 +53,13 @@ class TokenController extends \BaseController {
 		if($validator->fails()){
 			return Redirect::back()->withInput()->withErrors($validator);
 		}
-		
-		$key = str_random(6);
+
 		$amount = $data['amount'];
+
 		for($count = 1; $count <= $amount; $count++) {
+			
+			$key = Token::generateUniqueRandom(); // generate a key
+
 			$token = new Token();
 			$token->token = $key;
 			$token->link = $data['url'];
@@ -73,7 +75,7 @@ class TokenController extends \BaseController {
 		}else{
 			return Redirect::route('token.index')->with('error',"Something went wrong.Try again");
 		}
-	}
+	
 	}
 
 	/**
