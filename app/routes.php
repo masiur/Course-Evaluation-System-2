@@ -10,8 +10,11 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+Route::get('/', function(){
+	return View::make('index')->with('title', 'Course Evaluation System');
+});
 
-Route::get('/',function(){
+Route::get('/admin', function(){
 	return Redirect::route('dashboard');
 });
 
@@ -36,6 +39,7 @@ Route::group(array('before' => 'auth'), function()
 	Route::get('token', ['as' => 'token.index', 'uses' => 'TokenController@index']);
 	Route::get('token/create', ['as' => 'token.create', 'uses' => 'TokenController@create']);
 	Route::post('create', ['as' => 'token.store', 'uses' => 'TokenController@store']);
+	Route::post('create', ['as' => 'token.check', 'uses' => 'TokenController@check']);
 
 
 });

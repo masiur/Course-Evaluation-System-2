@@ -85,9 +85,37 @@ class TokenController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function check()
 	{
-		//
+		$rules = [
+
+					'token'      => 'required'
+				];
+
+		$data = Input::all();
+
+		$validator = Validator::make($data,$rules);
+
+		if($validator->fails()){
+			return Redirect::back()->withInput()->withErrors($validator);
+		}
+
+		$token = $data['token'];
+
+		if(Token::where('token', $token)->exists()) {
+			$id = Token::where('token', $token)->pluck('id');
+			if (Token::where('id', $id)->where('is_used', 0)->exists()) {
+				 $url = Token::where('id', $id)->pluck('link');
+				return Redirect::away("$url");
+			} else {
+				return Redirect::back()->withErrors('Token already used. Try another');
+			}
+		} else {
+			return Redirect::back()->withErrors('Token mismatched.Please, try another');
+		}
+
+
+	
 	}
 
 	/**

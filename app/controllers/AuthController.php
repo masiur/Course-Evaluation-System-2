@@ -100,7 +100,36 @@ class AuthController extends \BaseController {
 	}
 
 	public function store()  {
+		$rules = [
 
+					'name'      => 'required',
+					'email' => 'required|email',
+					'password' => 'required',
+
+			];
+
+		$data = Input::all();
+
+		$validator = Validator::make($data,$rules);
+
+		if($validator->fails()){
+			return Redirect::back()->withInput()->withErrors($validator);
+		}
+
+		$user = new User();
+		$user->name = $data['name'];
+		$user->email = $data['email'];
+		$user->password = Hash::make($data['password']);
+		$user->save();
+		$flag = true;
+		
+
+
+		if($flag){
+			return Redirect::route('user.index')->with('success',"user Generated Successfully");
+		}else{
+			return Redirect::route('token.index')->with('error',"Something went wrong.Try again");
+		}
 	}
 
 
