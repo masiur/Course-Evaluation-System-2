@@ -20,6 +20,7 @@
                                 <th>ID</th>
                                 <th>Token</th>
                                 <th>Google Form's Link</th>
+                                <th>Status</th>
                                 <th>Created For</th>
                                 <th>Created Time</th>
                             </tr>
@@ -30,8 +31,9 @@
                                 	<td>{{ $token->id}}</td>
                                     <td>{{ $token->token}}</td>
                                     <td>{{ $token->link}}</td>
+                                    <td>{{ $status[$token->is_used] }}</td>
                                     <td>{{ $token->user->name }}</td>
-                                    <td>{{ $token->created_at->timezone(Auth::user()->timezone) }}</td>
+                                    <td>{{ $token->created_at->diffForHumans() }}</td>
                                 </tr>
                             @endforeach
                             </tbody>

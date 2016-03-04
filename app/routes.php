@@ -39,7 +39,8 @@ Route::group(array('before' => 'auth'), function()
 	Route::get('token', ['as' => 'token.index', 'uses' => 'TokenController@index']);
 	Route::get('token/create', ['as' => 'token.create', 'uses' => 'TokenController@create']);
 	Route::post('create', ['as' => 'token.store', 'uses' => 'TokenController@store']);
-	Route::post('create', ['as' => 'token.check', 'uses' => 'TokenController@check']);
+	Route::post('token/check', ['as' => 'token.check', 'uses' => 'TokenController@check']);
+	Route::get('token/delete', ['as' => 'token.delete', 'uses' => 'TokenController@destroy']);
 
 
 });

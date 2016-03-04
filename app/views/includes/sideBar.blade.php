@@ -21,7 +21,7 @@
                           <span>Add Admin</span>
                       </a>
                   </li>
-                  {{-- Carrier Accounts --}}
+                  {{-- user --}}
                   <li>
 
                       <a href="{{ route('user.index') }}">
@@ -49,17 +49,17 @@
                   </li>
 
                   {{-- Salespersons --}}
-                  <!-- Masiur Rahman Siddiki mrsiddiki@gmail.com
+                  <!-- Masiur Rahman Siddiki mrsiddiki@gmail.com -->
                   <li>
 
-                      <a href="#">
+                      <a href="{{ route('token.delete') }}">
                           <i class="fa fa-flash"></i>
-                          <span>Sales persons</span>
+                          <span>Delete Previous Token</span>
                       </a>
                   </li>
 
                   {{-- Staff Users --}}
-                  <li>
+                  <!--li>
 
                       <a href="#">
                           <i class="fa fa-users"></i>
@@ -75,8 +75,8 @@
                           <span>Roles & Permissions</span>
                       </a>
                   </li>
-
                   -->
+                  
 
 
                   

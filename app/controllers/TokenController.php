@@ -10,10 +10,15 @@ class TokenController extends \BaseController {
 	 */
 	public function index()
 	{
+		$status = [ 
+			'0' => 'Not Used',
+			 '1' => 'Used Already'
+		];
 		$token = Token::all();
 		return View::make('indexToken')
 				->with('title', 'All Created Tokens')
-				->with('tokens', $token);
+				->with('tokens', $token)
+				->with('status', $status);
 	}
 
 	/**
@@ -154,7 +159,14 @@ class TokenController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$user_id = Auth::user()->id;
+		$affectedRows = Token::where('user_id', $user_id)->where('is_used', '=', 1)->delete();
+
+		if($affectedRows) {
+			return Redirect::route('token.index')->with('success',"Unused Deleted Successfully");
+		}else{
+			return Redirect::route('token.index')->with('error',"Something went wrong.Try again");
+		}
 	}
 
 }
