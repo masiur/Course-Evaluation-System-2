@@ -21,11 +21,13 @@
                             {{ Form::text('name', null, array('class' => 'form-control',  'placeholder' => 'New User Name', 'required')) }}
                         </div>
                     </div>
+                    
+        <!-- input for name -->
 
                     <div class="form-group">
                         {{ Form::label('email', 'Email*', array('class' => 'col-md-2 control-label')) }}
                         <div class="col-md-4">
-                            {{ Form::email('email', null, array('class' => 'form-control',  'placeholder' => 'email@domain.com', 'required')) }}
+                            {{ Form::email('email','', array('class' => 'form-control',  'placeholder' => 'email@domain.com', 'required')) }}
                         </div>
                     </div>
 
@@ -35,7 +37,7 @@
                     <div class="form-group">
                         {{ Form::label('password', 'Password*', array('class' => 'col-md-2 control-label')) }}
                         <div class="col-md-4">
-                            {{ Form::password('password', null, array('class' => 'form-control',  'placeholder' => 'Type Your Password ', 'required')) }}
+                            {{ Form::password('password', array('class' => 'form-control',  'placeholder' => 'Type Your Password ', 'required')) }}
                         </div>
                     </div>
                       

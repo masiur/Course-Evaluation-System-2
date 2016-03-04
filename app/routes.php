@@ -29,10 +29,9 @@ Route::group(array('before' => 'auth'), function()
 	Route::get('change-password', array('as' => 'password.change', 'uses' => 'AuthController@changePassword'));
 	Route::post('change-password', array('as' => 'password.doChange', 'uses' => 'AuthController@doChangePassword'));
 	
-	Route::get('create', ['as' => 'user.index', 'uses' => 'AuthController@index']);
+	Route::get('user', ['as' => 'user.index', 'uses' => 'AuthController@index']);
 	Route::get('create', ['as' => 'user.create', 'uses' => 'AuthController@create']);
-
-	Route::get('create', ['as' => 'user.store', 'uses' => 'AuthController@store']);
+	Route::post('create', ['as' => 'user.store', 'uses' => 'AuthController@store']);
 
 
 });

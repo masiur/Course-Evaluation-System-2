@@ -94,7 +94,9 @@ class AuthController extends \BaseController {
 	}
 
 	public function create()  {
-		return View:make('create');
+		
+		return View::make('add')
+					->with('title', 'Add New Admin');
 	}
 
 	public function store()  {
