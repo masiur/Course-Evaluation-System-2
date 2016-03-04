@@ -59,16 +59,16 @@
                   </li>
 
                   {{-- Staff Users --}}
-                  <!--li>
+                  <li>
 
-                      <a href="#">
+                      <a href="{{ route('token.print') }}">
                           <i class="fa fa-users"></i>
-                          <span>Staff Users</span>
+                          <span>Print Your Tokens</span>
                       </a>
                   </li>
 
                   {{-- Roles & Permissions --}}
-                  <li>
+                  <!--li>
 
                       <a href="#">
                           <i class="fa fa-gears"></i>

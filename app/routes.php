@@ -41,6 +41,7 @@ Route::group(array('before' => 'auth'), function()
 	Route::post('create', ['as' => 'token.store', 'uses' => 'TokenController@store']);
 	Route::post('token/check', ['as' => 'token.check', 'uses' => 'TokenController@check']);
 	Route::get('token/delete', ['as' => 'token.delete', 'uses' => 'TokenController@destroy']);
+	Route::get('token/print', ['as' => 'token.print', 'uses' => 'TokenController@print']);
 
 
 });

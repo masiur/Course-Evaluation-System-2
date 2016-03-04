@@ -157,16 +157,25 @@ class TokenController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy()
 	{
 		$user_id = Auth::user()->id;
 		$affectedRows = Token::where('user_id', $user_id)->where('is_used', '=', 1)->delete();
-
+	
 		if($affectedRows) {
 			return Redirect::route('token.index')->with('success',"Unused Deleted Successfully");
 		}else{
-			return Redirect::route('token.index')->with('error',"Something went wrong.Try again");
+			return Redirect::route('token.index')->with('error',"Something went wrong.May be you are not authorized");
 		}
+	}
+
+	public function print()
+	{
+		$id = Auth::user()->id;
+		$token = Token::where('user_id', $id)->where('is_used', '=', 0)->get();
+		return View::make('print')
+				->with('title', 'Print line')
+				->with('tokens', $token);
 	}
 
 }
