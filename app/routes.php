@@ -34,7 +34,7 @@ Route::group(array('before' => 'auth'), function()
 	
 	Route::get('user', ['as' => 'user.index', 'uses' => 'AuthController@index']);
 	Route::get('user/add', ['as' => 'user.create', 'uses' => 'AuthController@create']);
-	Route::post('create', ['as' => 'user.store', 'uses' => 'AuthController@store']);
+	Route::post('user', ['as' => 'user.store', 'uses' => 'AuthController@store']);
 
 	Route::get('token', ['as' => 'token.index', 'uses' => 'TokenController@index']);
 	Route::get('token/create', ['as' => 'token.create', 'uses' => 'TokenController@create']);

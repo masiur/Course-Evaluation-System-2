@@ -106,9 +106,12 @@ class TokenController extends \BaseController {
 			$id = Token::where('token', $token)->pluck('id');
 			if (Token::where('id', $id)->where('is_used', 0)->exists()) {
 				 $url = Token::where('id', $id)->pluck('link');
+				 $update_token = Token::find($id);
+				 $update_token->is_used = 1;
+				 $update_token->save();
 				return Redirect::away("$url");
 			} else {
-				return Redirect::back()->withErrors('Token already used. Try another');
+				return Redirect::back()->withErrors('Token already used.Try another');
 			}
 		} else {
 			return Redirect::back()->withErrors('Token mismatched.Please, try another');

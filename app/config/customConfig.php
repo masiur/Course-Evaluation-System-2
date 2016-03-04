@@ -2,7 +2,7 @@
 
 return [
 	'names' =>[
-		'siteName' => ''
+		'siteName' => 'Course Evaluation System'
 	],
 	'roles' =>[
 		'admin' => 'admin'

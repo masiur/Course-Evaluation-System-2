@@ -90,7 +90,10 @@ class AuthController extends \BaseController {
 	}
 
 	public function index()  {
-
+		$users = User::all();
+		return View::make('allUser')
+					->with('title', 'List of all Admin')
+					->with('users', $users);
 	}
 
 	public function create()  {
@@ -120,16 +123,12 @@ class AuthController extends \BaseController {
 		$user->name = $data['name'];
 		$user->email = $data['email'];
 		$user->password = Hash::make($data['password']);
-		$user->save();
-		$flag = true;
-		
-
-
-		if($flag){
-			return Redirect::route('user.index')->with('success',"user Generated Successfully");
-		}else{
-			return Redirect::route('token.index')->with('error',"Something went wrong.Try again");
+		if($user->save()) {
+			return Redirect::route('user.index')->with('success',"User Added Successfully & email: ".$data['email']." And Password: ".$data['password']);
+		} else {
+			return Redirect::route('user.index')->with('error',"Something went wrong.Try again");
 		}
+		
 	}
 
 
